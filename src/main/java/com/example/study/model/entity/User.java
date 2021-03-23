@@ -10,7 +10,6 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
 @Entity // == table
 //@Table(name = "user")
 
@@ -20,9 +19,6 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //mysql이기 때문에 identity로 한다.
     private Long id;
-
-
-
 
 //    @Column(name = "account")
     private String account;

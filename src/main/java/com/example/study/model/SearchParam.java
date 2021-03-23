@@ -13,4 +13,3 @@ public class SearchParam {
 
     //{"account" : "", "email" : "", "page" : 0}
 }
-
