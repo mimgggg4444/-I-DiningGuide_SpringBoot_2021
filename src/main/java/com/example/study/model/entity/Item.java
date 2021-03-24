@@ -23,6 +23,8 @@ public class Item {
 
     private String name;
 
+    private String title;
+
     private Integer price;
 
     private String content;
@@ -43,6 +45,8 @@ public class Item {
 
     private String updatedBy;
 
+    private Long partnerId;
+
 
 
 //    LAZY 타입과 EAGER 타입이 있다.
@@ -55,6 +59,6 @@ public class Item {
 //    where item.id = ?
 
     //    1:N
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "item")
-    private List<OrderDetail> orderDetailList;
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "item")
+//    private List<OrderDetail> orderDetailList;
 }

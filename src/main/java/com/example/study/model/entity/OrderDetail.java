@@ -23,8 +23,6 @@ public class OrderDetail {
 
         private String status;
 
-        private LocalDateTime orderAt;
-
         private LocalDateTime arrivalDate;
 
         private Integer quantity;
@@ -40,6 +38,10 @@ public class OrderDetail {
         private LocalDateTime updatedAt;
 
         private String updatedBy;
+
+        private Long itemId;
+
+        private Long orderGroupId;
 
         //1 : N
         //order입장에서는 자신은 n이고 상대가 되는 userid는 1이다.
