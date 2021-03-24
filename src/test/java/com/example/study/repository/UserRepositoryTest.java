@@ -2,13 +2,11 @@ package com.example.study.repository;
 
 
 import com.example.study.StudyApplicationTests;
+import com.example.study.model.entity.Item;
 import com.example.study.model.entity.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.Assert;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
@@ -42,16 +40,20 @@ public class UserRepositoryTest extends StudyApplicationTests {
     }
 
     @Test
-
+    @Transactional
     public void read(){     //@RequestParam Long id (매겨변수 안의 값을 이렇게 만들어서 들어온 값을 검색 할 수 있다.) 당연 return 값은 User로 바꿔줘야 한다.
+        Optional<User> user = userRepository.findByAccount("magenta");
 
-        Optional<User> user = userRepository.findById(4L);
+
+//        select * from user where id =?
 
         user.ifPresent(selectUser -> {
-            System.out.println("user : " + selectUser);
-            System.out.println("email : " + selectUser.getEmail());
+//            이렇게 하면 list형태로 반환된다.
+            selectUser.getOrderDetailList().stream().forEach(detail ->{
+                Item item = detail.getItem();
+                System.out.println(detail.getItem());
+            });
         });
-
 //        return user.get();    (만약 위에 저렇게 했다면)
     }
 

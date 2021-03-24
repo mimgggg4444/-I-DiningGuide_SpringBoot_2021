@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -23,11 +24,18 @@ public class User {
 //    @Column(name = "account")
     private String account;
 
+    private String password;
+
+    private String status;
+
     private String email;
 
     private String phoneNumber;
 //    이거 phone_number로 할 필요 없음 자바가 알아서 바꿔줌.
 
+    private LocalDateTime registeredAt;
+
+    private LocalDateTime unregisteredAt;
 
     private LocalDateTime createdAt;
 
@@ -36,4 +44,9 @@ public class User {
     private LocalDateTime updatedAt;
 
     private String updatedBy;
+
+
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+//    private List<OrderDetail> orderDetailList;
+
 }
