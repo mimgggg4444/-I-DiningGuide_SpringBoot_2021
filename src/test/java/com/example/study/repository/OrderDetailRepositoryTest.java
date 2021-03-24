@@ -27,7 +27,7 @@ public class OrderDetailRepositoryTest extends StudyApplicationTests {
         orderDetail.setQuantity(1); //수량
         orderDetail.setTotalPrice(BigDecimal.valueOf(90000));
 
-        orderDetail.setOrderGroupId(1L); //어떠한 장바구니에
+//        orderDetail.setOrderGroupId(1L); //어떠한 장바구니에
         orderDetail.setItemId(1L); //어떠한 상품을 주문하는가.
 
         orderDetail.setCreatedAt(LocalDateTime.now());

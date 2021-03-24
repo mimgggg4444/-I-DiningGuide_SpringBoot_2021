@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Entity
 @NoArgsConstructor
-//@ToString(exclude = {"user", "item"})
+@ToString(exclude = {"orderGroup"})
 public class OrderDetail {
 
 
@@ -29,8 +29,6 @@ public class OrderDetail {
 
         private BigDecimal totalPrice;
 
-
-
         private LocalDateTime createdAt;
 
         private String createdBy;
@@ -41,19 +39,8 @@ public class OrderDetail {
 
         private Long itemId;
 
-        private Long orderGroupId;
+        //      orderDetail N : 1 orderGroup
+        @ManyToOne
+        private OrderGroup orderGroup;
 
-        //1 : N
-        //order입장에서는 자신은 n이고 상대가 되는 userid는 1이다.
-//      long였던 타입을 user타입으로도 바꿔줘야 한다.
-//      변수명도 user이라고 변경
-//        반드시 객체 명을 적어야 한다. 애가 알아서 userid를 찾아간다.
-
-//        @ManyToOne
-//        private User user;
-
-//        N : 1
-
-//        @ManyToOne
-//        private Item item;
     }
