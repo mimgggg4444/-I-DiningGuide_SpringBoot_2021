@@ -15,14 +15,13 @@ public class UserRepositoryTest extends StudyApplicationTests {
 
     @Test
     public void create(){
-        String account = "minki";
-        String password = "Test01";
+        String account = "mandu";
+        String password = "mandu1004";
         String status = "REGISTERED";
-        String email = "Test01@gmail.com";
-        String phoneNumber = "010-1225-2582";
+        String email = "mandu@gmail.com";
+        String phoneNumber = "010-5446-8789";
         LocalDateTime registeredAt = LocalDateTime.now();
-        LocalDateTime createdAt = LocalDateTime.now();
-        String createdBy = "AdminServer";
+
 
         User user = new User();
         user.setAccount(account);
@@ -31,8 +30,8 @@ public class UserRepositoryTest extends StudyApplicationTests {
         user.setEmail(email);
         user.setPhoneNumber(phoneNumber);
         user.setRegisteredAt(registeredAt);
-        user.setCreatedAt(createdAt);
-        user.setCreatedBy(createdBy);
+
+        User u = User.builder().account(account).password(password).status(status).email(email).build();
 
         User newUser = userRepository.save(user);
 
@@ -58,10 +57,14 @@ public class UserRepositoryTest extends StudyApplicationTests {
 
                 System.out.println("----------------주문상세----------------");
                 orderGroup.getOrderDetailList().forEach(orderDetail -> {
+
+                System.out.println("파트너사 이름 : " + orderDetail.getItem().getPartner().getName());
+                System.out.println("파트너사 카테고리 : " + orderDetail.getItem().getPartner().getCategory().getTitle());
+                System.out.println("주문 상품 : " + orderDetail.getItem().getName());
+                System.out.println("고객센터 번호 : " + orderDetail.getItem().getPartner().getPartnerNumber());
                 System.out.println("주문의 상태 : " + orderDetail.getStatus());
                 System.out.println("도착예정일자 : " + orderDetail.getArrivalDate());
                 });
-
             });
         }
     }

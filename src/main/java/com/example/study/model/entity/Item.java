@@ -1,8 +1,12 @@
 package com.example.study.model.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.Accessors;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -12,6 +16,10 @@ import java.util.List;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString(exclude = {"orderDetailList", "partner"})
+@EntityListeners(AuditingEntityListener.class)
+@Builder
+@Accessors(chain = true)
 public class Item {
 
 
@@ -37,28 +45,24 @@ public class Item {
 
     private LocalDateTime unregisteredAt;
 
+    @CreatedDate
     private LocalDateTime createdAt;
 
+    @CreatedBy
     private String createdBy;
 
+    @LastModifiedDate
     private LocalDateTime updatedAt;
 
+    @LastModifiedBy
     private String updatedBy;
 
-    private Long partnerId;
+    //  Item N : 1 Partner
+    @ManyToOne
+    private Partner partner;
 
 
-
-//    LAZY 타입과 EAGER 타입이 있다.
-//    LAZY = 지연로딩(연관된 것만 로딩), EAGER = 1:1 즉시로딩(즉시 모든걸 다 로딩{한가지만 해도 모든걸 다 검색함.})
-
-//    LAZY = SELECT * FROM item where id = ?
-
-//    EAGER = item_id = order_detail.item_id
-//    user_id = order_detail.user_id
-//    where item.id = ?
-
-    //    1:N
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "item")
-//    private List<OrderDetail> orderDetailList;
+    //  Item 1 : N OrderDetail
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "item")
+    private List<OrderDetail> orderDetailList;
 }
