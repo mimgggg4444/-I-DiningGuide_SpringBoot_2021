@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Service
 public class UserApiLogicService implements CrudInterface<UserApiRequest, UserApiResponse> {
@@ -44,12 +45,38 @@ public class UserApiLogicService implements CrudInterface<UserApiRequest, UserAp
 
     @Override
     public Header<UserApiResponse> read(Long id) {
-        return null;
+
+        return userRepository.findById(id)
+                .map(user -> response(user))
+                .orElseGet(
+                        ()-> Header.ERROR("데이터 없음"));
+        // user -> userApiResponse return
     }
 
     @Override
     public Header<UserApiResponse> update(Header<UserApiRequest> request) {
-        return null;
+
+        // 1. data
+        UserApiRequest userApiRequest = request.getData();
+
+        // 2. id -> user 데이터를 찾는다.
+        Optional<User> optional = userRepository.findById(userApiRequest.getId());
+
+        return optional.map(user -> {
+            // 3. data -> update
+            user.setAccount(userApiRequest.getAccount())
+                    .setPassword(userApiRequest.getPassword())
+                    .setStatus(userApiRequest.getStatus())
+                    .setPhoneNumber(userApiRequest.getPhoneNumber())
+                    .setEmail(userApiRequest.getEmail())
+                    .setRegisteredAt(userApiRequest.getRegisteredAt())
+                    .setUnregisteredAt(userApiRequest.getUnregisteredAt())
+                    ;
+            return user;
+        })
+                .map(user -> userRepository.save(user)) // update가 일어남. -> newUser
+                .map(user -> response(user))            // userApiResponse가 일어남.
+                .orElseGet(()-> Header.ERROR("업데이트 하려는데 데이터가 없다?"));
     }
 
     @Override
