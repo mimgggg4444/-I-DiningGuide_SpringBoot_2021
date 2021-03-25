@@ -39,7 +39,6 @@ public class UserApiLogicService implements CrudInterface<UserApiRequest, UserAp
         User newUser = userRepository.save(user);
 
         // 3.
-
         return response(newUser);
     }
 

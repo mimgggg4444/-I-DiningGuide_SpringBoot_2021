@@ -32,7 +32,7 @@ public class UserApiController implements CrudInterface <UserApiRequest, UserApi
 
     @Override
     @PutMapping("")
-    public Header<UserApiResponse> update(@RequestBody Header <UserApiRequest> userApiRequest) {
+    public Header<UserApiResponse> update(@RequestBody Header <UserApiRequest> requset) {
         return null;
     }
 
