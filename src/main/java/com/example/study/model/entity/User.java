@@ -1,5 +1,6 @@
 package com.example.study.model.entity;
 
+import com.example.study.model.enumclass.UserStatus;
 import lombok.*;
 import lombok.experimental.Accessors;
 import org.springframework.data.annotation.CreatedBy;
@@ -26,17 +27,18 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY) //mysql이기 때문에 identity로 한다.
     private Long id;
 
-//    @Column(name = "account")
+    // @Column(name = "account")
     private String account;
 
     private String password;
 
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private UserStatus status;  // REGISTERED / UNREGISTERED /WAITING /
 
     private String email;
 
+    // phone_number로 할 필요 없음 자바가 알아서 바꿔줌.
     private String phoneNumber;
-//    phone_number로 할 필요 없음 자바가 알아서 바꿔줌.
 
     private LocalDateTime registeredAt;
 

@@ -26,13 +26,9 @@ public class OrderDetail {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
-
         private String status;
-
         private LocalDateTime arrivalDate;
-
         private Integer quantity;
-
         private BigDecimal totalPrice;
 
         @CreatedDate

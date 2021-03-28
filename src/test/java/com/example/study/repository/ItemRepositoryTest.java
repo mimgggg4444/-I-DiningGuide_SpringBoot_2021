@@ -2,6 +2,7 @@ package com.example.study.repository;
 
 import com.example.study.StudyApplicationTests;
 import com.example.study.model.entity.Item;
+import com.example.study.model.enumclass.ItemStatus;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,12 +20,11 @@ public class ItemRepositoryTest extends StudyApplicationTests {
     public void create(){
 
         Item item = new Item();
-
-        item.setStatus("UNREGISTERED");
+        item.setStatus(ItemStatus.REGISTERED);
         item.setName("고양이 헤드셋");
         item.setTitle("A8800");
         item.setContent("2021년도 최신형 고양이귀 헤드셋!");
-        item.setPrice(79000);
+//        item.setPrice(79000);
         item.setBrandName("Pixel network");
 
         item.setRegisteredAt(LocalDateTime.now());

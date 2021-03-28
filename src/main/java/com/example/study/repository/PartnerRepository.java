@@ -2,15 +2,20 @@ package com.example.study.repository;
 
 import com.example.study.model.entity.Category;
 import com.example.study.model.entity.Partner;
-import com.example.study.model.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
 public interface PartnerRepository extends JpaRepository<Partner, Long> {
 
-    Partner getOne(Long id);
+//    Partner getOne(Long id);
+
+    List<Partner> findByCategory(Category category);
+//    Partner findByCategory(Long Category);
+
+//    Optional<Partner> findByCategory(Long id);
 
 }
