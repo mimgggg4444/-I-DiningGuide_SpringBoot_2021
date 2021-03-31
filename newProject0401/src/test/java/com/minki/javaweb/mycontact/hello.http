@@ -1,0 +1,2 @@
+GET http://localhost:8080/api/helloWorld
+#ctrl + shift + r -> 바로실행 단축키.
