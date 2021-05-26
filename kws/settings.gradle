@@ -1,0 +1,4 @@
+rootProject.name = 'kws'
+
+//include 'kws-api'
+include('kws-api')

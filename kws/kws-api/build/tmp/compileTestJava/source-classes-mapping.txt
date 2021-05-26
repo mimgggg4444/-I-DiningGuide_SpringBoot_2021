@@ -1,0 +1,2 @@
+com/kwssis/kws/KwsApplicationTests.java
+ com.kwssis.kws.KwsApplicationTests
