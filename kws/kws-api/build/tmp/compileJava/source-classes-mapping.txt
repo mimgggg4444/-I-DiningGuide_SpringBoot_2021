@@ -2,3 +2,7 @@ com/kwssis/kws/KwsApplication.java
  com.kwssis.kws.KwsApplication
 com/kwssis/kws/interfaces/WelcomeController.java
  com.kwssis.kws.interfaces.WelcomeController
+com/kwssis/kws/domain/Restaurant.java
+ com.kwssis.kws.domain.Restaurant
+com/kwssis/kws/interfaces/RestaurantController.java
+ com.kwssis.kws.interfaces.RestaurantController

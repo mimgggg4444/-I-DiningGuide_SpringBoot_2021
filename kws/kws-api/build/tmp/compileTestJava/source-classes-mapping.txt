@@ -1,2 +1,6 @@
 com/kwssis/kws/KwsApplicationTests.java
  com.kwssis.kws.KwsApplicationTests
+com/kwssis/kws/domain/RestaurantTests.java
+ com.kwssis.kws.domain.RestaurantTests
+com/kwssis/kws/interfaces/RestaurantControllerTest.java
+ com.kwssis.kws.interfaces.RestaurantControllerTest
